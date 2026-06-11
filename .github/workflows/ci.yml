@@ -18,10 +18,14 @@ jobs:
           echo "$HOME/.moon/bin" >> $GITHUB_PATH
 
       - name: Build
-        run: moon build --target native
+        run: |
+          export PATH="$HOME/.moon/bin:$PATH"
+          moon build --target native
 
       - name: Test
-        run: moon test --target native
+        run: |
+          export PATH="$HOME/.moon/bin:$PATH"
+          moon test --target native
 
   verify:
     runs-on: ubuntu-latest
@@ -44,5 +48,6 @@ jobs:
 
       - name: Run formal verification
         run: |
+          export PATH="$HOME/.moon/bin:$HOME/.opam/default/bin:$PATH"
           eval $(opam env)
           moon prove
