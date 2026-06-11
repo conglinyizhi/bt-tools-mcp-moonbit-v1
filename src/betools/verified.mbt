@@ -6,7 +6,7 @@ pub fn validate_line_number(
   total : Int,
 ) -> Bool where {
   proof_require: 0 <= total,
-  proof_ensure: result => (result == true) => (1 <= line && line <= total),
+  proof_ensure: 1 <= line && line <= total,
 } {
   line >= 1 && line <= total
 }
@@ -18,7 +18,7 @@ pub fn validate_range(
   total : Int,
 ) -> Bool where {
   proof_require: 0 <= total,
-  proof_ensure: result => (result == true) => (1 <= start && start <= end && end <= total),
+  proof_ensure: 1 <= start && start <= end && end <= total,
 } {
   start >= 1 && start <= end && end <= total
 }
@@ -29,7 +29,7 @@ pub fn clamp_end(
   total : Int,
 ) -> Int where {
   proof_require: 0 <= total,
-  proof_ensure: result => 0 <= result && result <= total,
+  proof_ensure: 0 <= result && result <= total,
 } {
   if end > total {
     total

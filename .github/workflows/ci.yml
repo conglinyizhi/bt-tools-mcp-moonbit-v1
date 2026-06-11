@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Build
+        run: moon build --target native
+
+      - name: Test
+        run: moon test --target native
+
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install MoonBit
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install.sh | bash
+          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+
+      - name: Install Why3 and solvers
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y opam z3
+          opam init --disable-sandboxing -y
+          eval $(opam env)
+          opam install why3 alt-ergo -y
+          echo "$HOME/.opam/default/bin" >> $GITHUB_PATH
+
+      - name: Run formal verification
+        run: |
+          eval $(opam env)
+          moon prove

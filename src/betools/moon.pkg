@@ -5,7 +5,3 @@ import {
   "moonbitlang/core/json",
   "moonbitlang/core/strconv",
 }
-
-options(
-  "proof-enabled": true,
-)
