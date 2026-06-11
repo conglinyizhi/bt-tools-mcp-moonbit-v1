@@ -1,0 +1,7 @@
+import {
+  "conglinyizhi/better_edit_tools_mcp/src/betools",
+}
+
+options(
+  "is-main": true,
+)
