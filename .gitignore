@@ -1,7 +1,8 @@
 .DS_Store
 _build/
 target/
-target
 .mooncakes/
-.moonagent/.moonagent-chip-*
+.moonagent/
+.moonagent-chip-*
 .moonagent-chip-index.txt
+.moonagent-view-*
