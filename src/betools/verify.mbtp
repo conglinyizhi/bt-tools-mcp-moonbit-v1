@@ -1,0 +1,9 @@
+// Logic-side predicates for verification
+
+predicate valid_range(start : Int, end : Int, total : Int) {
+  1 <= start && start <= end && end <= total
+}
+
+predicate in_bounds(lines : Array[String], i : Int) {
+  0 <= i && i < lines.length()
+}
