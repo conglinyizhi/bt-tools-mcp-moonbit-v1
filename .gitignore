@@ -3,4 +3,5 @@ _build/
 target/
 target
 .mooncakes/
-.moonagent/
+.moonagent/.moonagent-chip-*
+.moonagent-chip-index.txt
