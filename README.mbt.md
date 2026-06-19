@@ -1,5 +1,7 @@
 # better-edit-tools-mcp-for-moonbit
 
+旧版本实现，归档并不再维护，但 Moonbit 版本不会因此停止开发
+
 MoonBit 版本的 better-edit-tools MCP 服务器，移植自 Go 版本。
 
 ## 项目结构
